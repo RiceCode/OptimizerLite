@@ -1,0 +1,8 @@
+Paste only the CBM onto readLite.xlsx on column A. Start on row2. Close readLite.xlsx. 
+For unknown reasons.... this program doesn't run when dropbox is on. You may have to pause sync dropbox. 
+Run the program by clicking onto ContainerOptimizerLite.
+Follow the program. 
+When complete, it will be saved under updatedLite.xlsx.
+
+
+Please note in order to run this program, you will need python3.4 installed along with other libraries. 
