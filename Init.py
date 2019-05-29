@@ -1,4 +1,5 @@
 
+
 class Init:
     def __init__(self):
         self.useLcl = True
@@ -13,6 +14,18 @@ class Init:
         self.size40HC = 67
         self.size45 = 76
         self.minLoad20 = 20
+
+
+    def CheckNotUsed(self, containerType, containerSize):
+        print(containerType, containerSize)
+        
+        if containerType == "False":
+            #print("Im returning 0")
+            return 0
+        else:
+            #print("Im returning containerSize")
+            return containerSize
+
 
 
 
@@ -38,36 +51,33 @@ class Init:
                         self.size45 = int(input("What is the maximum CBM you would like for your 45'"))
                         print("The default values has been updated.")
                     if(change.lower() == "container type allowed"):
-                        self.useLcl = int(input("Should 20' be used? Please reply True or False)"))
-                        print("use20 = " + self.useLcl)
-                        self.use20 = int(input("Should 20' be used? Please reply True or False)"))
-                        print("use20 = " + self.use20)
-                        self.use40 = int(input("Should 40' be used? Please reply True or False)"))
-                        print("use40 = " + self.use40)
-                        self.use40HC = int(input("Should 40HC be used? Please reply True or False)"))
-                        print("use40HC = " + self.use40HC)
-                        self.use45 = int(input("Should 45' be used? Please reply True or False)"))
-                        print("use45 = " + self.use45)
+                        self.useLcl = input("Should LCL be used? Please reply True or False")
+                        print("use LCL = " + self.useLcl)
+                        
+                        self.use20 = input("Should 20' be used? Please reply True or False")
+                        print("use 20 = " + self.use20)
+                        
+                        self.use40 = input("Should 40' be used? Please reply True or False")
+                        print("use 40 = " + self.use40)
+                        
+                        self.use40HC = input("Should 40HC be used? Please reply True or False")
+                        print("use 40HC = " + self.use40HC)
+                                        
+                        self.use45 = input("Should 45' be used? Please reply True or False")
+                        print("use 45 = " + self.use45)
+
+                        #Container being used:
+                        self.sizeLcl = self.CheckNotUsed(self.useLcl, self.sizeLcl)
+                        self.size20 = self.CheckNotUsed(self.use20, self.size20)
+                        self.size40 = self.CheckNotUsed(self.use40, self.size40)
+                        self.size40HC = self.CheckNotUsed(self.use40HC, self.size40HC)
+                        self.size45 = self.CheckNotUsed(self.use45, self.size45)
+
                         print("The default values has been updated.")
 
-
-        #Container being used:
-        self.sizeLcl = self.CheckNotUsed(self.useLcl, self.sizeLcl)
-        self.size20 = self.CheckNotUsed(self.use20, self.size20)
-        self.size40 = self.CheckNotUsed(self.use40, self.size40)
-        self.size40HC = self.CheckNotUsed(self.use40HC, self.size40HC)
-        self.size45 = self.CheckNotUsed(self.use45, self.size45)
-
-        return(self.sizeLcl, self.minLoad20, self.size20, self.size40, self.size40HC, self.size45)
+            return(self.sizeLcl, self.minLoad20, self.size20, self.size40, self.size40HC, self.size45)
 
 
-    def CheckNotUsed(self, containerType, containerSize):
-        if containerType == False:
-            #print("Im returning 0")
-            return 0
-        else:
-            #print("Im returning containerSize")
-            return containerSize
 
 
 
