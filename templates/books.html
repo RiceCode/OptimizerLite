@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Book Search
+{% endblock %}
+
+{% block body %}
+    <h1>Books</h1>
+    <p> Welcome {{username}}</p>
+
+
+
+
+    <form if="book_input_form" action="/books" method="post">
+        <!-- dropdown -->
+        <select name = "book_option">
+            <option value = "title">Book Title</option>
+            <option value = "author">author</option>
+            <option value = "isbn">isbn</option>
+        </select>
+
+        <!--search box-->
+        <label for "select_books">Search By</label>
+        <input type="text" name="search" placeholder="Search Here">
+        <button>Submit</button>
+    <form>
+    
+
+    {% if results != "" %}
+    <h2>Book List</h2>
+    <ul>
+        <table class="table">  
+            <thead> 
+                <tr> 
+                    <th scope="col">Title</th>
+                    <th scope="col">Author</th>
+                    <th scope="col">ISBN</th>
+                    <th scope="col">Year</th>
+                </tr>
+            </thead>
+           <tbody> 
+                {% for result in results %}
+                    <tr> 
+                        
+                        <td> <a href="/books/{{ result.id }}"> {{ result.title }} </a>  </td>
+                        <td>{{ result.author }}</td>
+                        <td>{{ result.isbn }}</td>
+                        <td>{{ result.year }}</td>
+                    </tr>
+                {% else %}
+                {% endfor %}
+           </tbody>
+
+        </table>
+    </ul>
+    {% endif %}
+
+{% endblock %}

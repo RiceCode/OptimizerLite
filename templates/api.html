@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    API Access to NotAmazon
+{% endblock %}
+
+{% block body %}
+    <h1>API</h1>
+
+    <p> 
+        Provide the ISBN and get the information about a sepcific book in json format. <br>
+        url: http://127.0.0.1:5000/api/books/&ltisbn_nbr&gt <br>
+        HTTP method: GET <br>
+        Parameter: isbn_nbr  <br>
+        format: json <br> 
+        callback: function to wrap JSON response <br> 
+        <br> 
+        example: http://127.0.0.1:5000/api/books/0380795272 <br>
+        Returns:  <br> 
+                { <br>
+                    "isbn": "0380795272", <br>
+                    "title": "Krondor: The Betrayal", <br>
+                    "author": "Raymond E. Feist", <br>
+                    "year": 1998, <br>
+                    "average_score": 2.5, <br>
+                    "review_count": 6 <br>
+                } <br><br>
+
+        *If there's no review, the average_score will be 0.0.
+    
+
+
+    </p>
+
+
+
+    </form>
+{% endblock %}

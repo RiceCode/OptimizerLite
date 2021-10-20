@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Review Page
+{% endblock %}
+
+{% block body %}
+
+    
+    <ul>
+        <h1>{{ book_info.title }}</h1>
+        <p> Welcome {{username}} to the review page. </p>
+            {% if user_avg_rating != "None" %}
+            <p> Users from NotAmazon has rated this book {{user_avg_rating}}/5. Users from goodreads rated this book {{goodreads_rating}}/5 </p>
+            {% else %}
+            <p> Users from NotAmazon has not rated this book yet. Be the first! Users from goodreads rated this book {{goodreads_rating}}/5 </p>
+            {% endif %}
+
+
+    
+        {% if previous_review != "" %}
+        <b> You've rated this book:</b>{{previous_review.rating}}/5 <br>
+        <b> Your review: </b> {{previous_review.review}} <br><br> 
+    
+        You've already reviewed this book. New review will replace the old one. <br><br>
+        {% endif %}
+
+        <form if="book_review_form"  action="/books/{{book_info.id}}" method="post">
+            <!-- Review Box -->
+            <div class="form-group">
+                <label for="review_text">Please write your review for {{ book_info.title }}</label>
+                <textarea class="form-control" rows="5" name="review_text"></textarea>
+            </div>
+
+            <!-- Rating toggle -->
+            <p>Please select your rating (1=worst, 5=best):</p>
+            <input type="radio" id="r1" name="rating_score" value="1">
+            <label for="r1">1</label>
+            <input type="radio" id="r2" name="rating_score" value="2">
+            <label for="r2">2</label>
+            <input type="radio" id="r3" name="rating_score" value="3">
+            <label for="r3">3</label> 
+            <input type="radio" id="r4" name="rating_score" value="4">
+            <label for="r4">4</label> 
+            <input type="radio" id="r5" name="rating_score" value="5">
+            <label for="r5">5</label>
+
+
+            <button>Submit</button>
+        </form>
+
+        <br>
+        <br>
+        {% if other_reviews != "" %}
+            <!-- <b>Other reviews: </b> -->
+            {% for r in other_reviews %}
+                <b> {{r.username}} </b>
+                <b> Rated: </b>{{r.rating}} <br>
+                {{r.review}} <br><br> 
+            {% endfor %}
+
+        {% endif %}
+
+    </ul>
+
+{% endblock %}

@@ -1,0 +1,28 @@
+
+{% extends "layout.html" %}
+
+{% block title %}
+    Login
+{% endblock %}
+
+{% block body %}
+    <br>
+    <img src="/static/images/logo.png" alt="NotAmazon Logo" height="150" width="400">
+    <br>
+    <br>
+
+    <h1>Log In to Your Account</h1>
+
+
+    {% if message %}
+    <p class="message"> {{ message | safe }} </p>
+    {% endif %}
+
+    <form action="/login" method="post">
+        <input type="text" name="username" placeholder="Enter Your Username">
+        <input type="password" name="password" placeholder="Enter Your Password">
+        <button>Submit</button>
+    <form>
+
+    </form>
+{% endblock %}

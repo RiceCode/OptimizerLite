@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block body %}
+    <br>
+    <img src="/static/images/logo.png" alt="NotAmazon Logo" height="150" width="400">
+    <br>
+    <br>
+    
+    <h1>Register For An Account</h1>
+    {% if message %}
+    <p class="message"> {{ message | safe }} </p>
+    {% endif %}
+
+    <form action="/submit" method="post">
+        <input type="text" name="username" placeholder="Username">
+        <input type="password" name="password" placeholder="Password">
+        <button>Submit</button>
+    <form>
+
+    </form>
+{% endblock %}
